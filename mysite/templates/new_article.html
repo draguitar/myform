@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+    <title>powered by Django</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}"/>
+</head>
+
+<body>
+<div id="Top">
+  <div id="TopMain">
+    <p id="title"><a href="/"></a></p>
+    <div id="Navigation">
+      <ul>
+        <li id="navlogin">Hi~ {{ request.session.session_username }}</li>
+        <li><a href="/logout/">logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div id="Wrapper">
+        <div id="Main">
+            <div id="Sidebar">
+            </div>
+
+<form  action="/topic/save/" autocomplete="on" method="post">
+{% csrf_token %}
+<div id="Content">
+    <div class="box">
+        <div class="inner">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody>
+                <tr>
+                  <td width="73" valign="top" align="center">
+                    <img src="LBForum%20-%20A%20Forum%20powered%20by%20Django_files/avatar.png" alt="" width="80px" height="80px">
+                  </td>
+                  <td width="10" valign="top"></td>
+                  <td width="auto" valign="top" align="left">
+                    <h2><font color="red">{{ errmsg }}</font></h2>
+                    <h2 style="padding: 0px; margin: 0px; font-size: 22px; line-height: 22px;">
+                        <label>標題:</label>&nbsp;<input type="text" name="topic" id="topic" maxlength="100">
+                        <input class="super normal button" value="SAVE" style="-moz-border-radius: 0px 5px 5px 0px; border: none;" type="submit">
+                        <input class="super normal button" value="CANCEL" style="-moz-border-radius: 0px 5px 5px 0px; border: none;" type="button" onclick="window.location.href='/forum'">
+                    </h2>
+                    <div class="sep5"></div>
+                    <span class="snow">
+                      <strong>{{ data_list.6 }}</strong>
+                    </span>
+                    <div class="sep14">
+                        <span style="font-size:16px;">
+                            <label>內容:</label>
+                            <textarea  id="content" name="content" rows="20" cols="50"></textarea></span>
+                        </span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</form>
+
+      <div class="c">
+      </div>
+    </div>
+  </div>
+
+
+<div id="Bottom">
+  <div id="BottomMain">
+    <div class="fr" style="float:right;color: #999999;">
+      Powered by <strong>draguitar</strong>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

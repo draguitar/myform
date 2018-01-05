@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+    <title>powered by Django</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}"/>
+</head>
+
+<body>
+<div id="Top">
+  <div id="TopMain">
+    <p id="title"><a href="/"></a></p>
+    <div id="Navigation">
+      <ul>
+        <li id="navlogin">Hi~ {{ request.session.session_username }}</li>
+        <li><a href="/logout/">logout</a></li>
+      </ul>
+    </div>
+    <!--
+    <div id="Search">
+      <form action="/recent/">
+        <input type="text" class="search" maxlength="40" name="q" value="" id="q">
+        <input type="submit" class="super normal button" value="Search" style="-moz-border-radius: 0px 5px 5px 0px; border: none;">
+      </form>
+    </div>
+    -->
+  </div>
+</div>
+
+
+    <div id="Wrapper">
+        <div id="Main">
+            <div id="Sidebar">
+            </div>
+<div id="Content">
+    <div class="box">
+        <div class="inner">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody>
+                <tr>
+                  <td width="73" valign="top" align="center">
+                    <img src="#" alt="" width="80px" height="80px">
+                  </td>
+                  <td width="10" valign="top"></td>
+                  <td width="auto" valign="top" align="left">
+                    <h1 style="padding: 0px; margin: 0px; font-size: 22px; line-height: 22px;"><a href="/forum/">Previous</a> </h1>
+                    <br>
+                    <h2 style="padding: 0px; margin: 0px; font-size: 22px; line-height: 22px;">{{ returnData.1}}</h2>
+                    <div class="sep5"></div>
+                    <span class="snow">
+                      Joined on:
+                      <strong>{{ returnData.6 }}</strong>
+                    </span>
+                    <div class="sep14">
+                        E-mail:
+                        <span style="font-size:16px;">
+                        {{ returnData.3 }}
+                        </span>
+                    </div>
+                    <!--
+                    <br>
+                    <div class="sep14">
+                        <label>Birthday:</label>
+                        <span style="font-size:16px;">
+                        {{ returnData.3 }}
+                        </span>
+                    </div>
+                    -->
+                    <br>
+                    <div class="sep14">
+                        <label>Posts:</label>
+                        <span style="font-size:16px;">
+                        {{ posts.0 }}篇
+                        </span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+      <div class="c">
+      </div>
+    </div>
+  </div>
+
+
+<div id="Bottom">
+  <div id="BottomMain">
+    <span class="fade"></span>
+    <div class="fr" style="float:right;color: #999999;">
+      Powered by <strong><a href="#">draguitar</a> </strong>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

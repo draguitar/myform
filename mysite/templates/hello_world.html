@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>I come from template!!</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <em>
+            {% for data in data_list %}
+                <li>{{ data }}</li>
+            {% endfor %}
+        </em>
+    </body>
+</html>

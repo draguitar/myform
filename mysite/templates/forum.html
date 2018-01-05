@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>powered by Django</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}"/>
+</head>
+
+<body>
+    
+  
+
+
+<div id="Top">
+  <div id="TopMain">
+    <p id="title"><a href="/"></a></p>
+    <div id="Navigation">
+      <ul>
+        <li id="navlogin">Hi~ {{ request.session.session_username }}</li>
+        <li><a href="/logout/">logout</a></li>
+      </ul>
+    </div>
+    <!--
+    <div id="Search">
+      <form action="/recent/">
+        <input type="text" class="search" maxlength="40" name="q" value="" id="q">
+        <input type="submit" class="super normal button" value="Search" style="-moz-border-radius: 0px 5px 5px 0px; border: none;">
+      </form>
+    </div>
+    -->
+  </div>
+</div>
+
+
+<div id="Wrapper">
+<div id="Main">
+        <div id="Sidebar"></div>
+
+<div id="Rightbar">
+    <div class="box">
+      <div class="cell">
+        <span class="bigger" style="color:deepskyblue">排行榜</span>
+      </div>
+
+    {% for data in top_article %}
+        {% if forloop.counter < 4 %}
+          <div class="inner">
+            <a href="/topic?articleid={{ data.0 }}">● &nbsp; {{ data.1 }}</a>
+          </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="sep20"></div>
+
+    <div class="sep20"></div>
+</div>
+
+<div id="Content">
+<div class="box">
+    <div class="cell" style="padding-bottom: 0px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td width="auto" valign="top">
+            <div class="fr" align="right">
+              <span class="snow">
+                Topics
+                <strong>
+                  [ {{ data_list|length }} ]
+                </strong>
+              </span>
+            </div>
+            <span class="bigger">
+                <a href="/forum/">文章區<img src="{% static 'images/refresh.png' %}" width="3%" ></a>
+
+                </span>
+            <div class="sep10"></div>
+            <div class="sep10"></div>
+            <div align="left">
+              <a href="/topic/new/" class="super normal button">Post new topic</a>
+            </div>
+            <div class="sep5"></div>
+            <div class="sep10"></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+<!--文章明細 Start-->
+    {% for data in data_list %}
+    <div class="cell">
+      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+          <tr>
+            <td valign="top" class="avatar">
+              <a class="dark" href="{{ profile }}">
+                <img width="48px" height="48px" src="{{ p }}" alt=""/>
+              </a>
+            </td>
+            <td valign="top" style="padding-left: 12px">
+              <div class="fr">
+                <a class="count_livid" href="/topic?articleid={{ data.0 }}">{{ data.3 }}</a>
+              </div>
+              <div class="sep3"></div>
+              <span style="color:#636A86" class="bigger">
+                <a href="/topic?articleid={{ data.0 }}">{{ data.1}}</a>
+              </span>
+              <div class="sep5"></div>
+              <span class="created">
+                <strong><a class="dark" href="/profile?authorid={{ data.6}}?">{{ data.5}}</a></strong> &bull;
+                {{ data.2}} views &bull;
+                <!--Last post {{ data.5}}-->
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+<!--文章明細 End-->
+    <div class="inner"></div>
+</div>
+</div>
+
+<div class="c">
+</div>
+</div>
+</div>
+
+
+<div id="Bottom">
+  <div id="BottomMain">
+    <span class="fade"></span>
+    <div class="fr" style="float:right;color: #999999;">
+      Powered by <strong><a href="#">draguitar</a> </strong>
+    </div>
+  </div>
+</div>
+
+
+     
+</body>
+</html>

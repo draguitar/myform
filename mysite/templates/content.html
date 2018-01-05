@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+    <title>powered by Django</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}"/>
+</head>
+
+<body>
+<div id="Top">
+  <div id="TopMain">
+    <p id="title"><a href="/"></a></p>
+    <div id="Navigation">
+      <ul>
+        <li id="navlogin">Hi~ {{ request.session.session_username }}</li>
+        <li><a href="/logout/">logout</a></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+    <div id="Wrapper">
+        <div id="Main">
+            <div id="Sidebar">
+            </div>
+<div id="Rightbar">
+    <div class="box">
+      <div class="cell">
+        <span class="bigger" style="color:deepskyblue">你可能會喜歡</span>
+      </div>
+      <div class="inner">
+        <a href="/topic?articleid={{ recommend.0 }}">● &nbsp; {{ recommend.1 }}</a>
+      </div>
+    </div>
+    <div class="sep20"></div>
+
+    <div class="sep20"></div>
+</div>
+<div id="Content">
+    <div class="box">
+        <div class="inner">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody>
+                <tr>
+                  <td width="73" valign="top" align="center">
+                    <img src="#" alt="" width="80px" height="80px">
+                  </td>
+                  <td width="10" valign="top"></td>
+                  <td width="auto" valign="top" align="left">
+                    <h2 style="padding: 0px; margin: 0px; font-size: 22px; line-height: 22px;">{{ data_list.1 }}</h2>
+                    <div class="sep5"></div>
+                    <span class="snow">
+                      <strong>{{ data_list.6 }}</strong>
+                    </span>
+                    →
+                    <span style="color:red">
+                      <strong > {{ data_list.9 }}</strong>
+                    </span>
+                    <div class="sep14">
+                        <span style="font-size:16px;">
+                        {{ data_list.2 }}
+                        </span>
+                    </div>
+                    <table width="100%" cellspacing="0" cellpadding="2" border="0">
+                      <tbody>
+                        <tr>
+                          <td width="50%">
+                            Views: <strong>{{ data_list.3}} </strong>
+                          </td>
+                          <td width="50%">
+                            Replies: <strong>{{ replyies }}</strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="50%">
+                            <a href="/forum/">View all topics</a>
+                          </td>
+                          <td width="50%">
+
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <!-- Reply 回覆 -->
+    {% for replydata in replydata_list %}
+    <div class="box">
+        <div class="inner">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody>
+                <tr>
+                  <td width="73" valign="top" align="center">
+                    <img src="#" alt="" width="80px" height="80px">
+                  </td>
+                  <td width="10" valign="top"></td>
+                  <td width="auto" valign="top" align="left">
+                    <h2 style="padding: 0px; margin: 0px; font-size: 14px; line-height: 18px;">{{ replydata.5 }}</h2>
+                      <span class="floor fr"> #{{ forloop.counter }}</span>
+                    <div class="sep5"></div>
+                    <span class="snow">
+                      <strong>{{ replydata.3 }}</strong>
+                    </span>
+                    <div class="sep14">
+                        <span style="font-size:12px;">
+                        {{ replydata.2 }}
+                        </span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+    <br>
+<!-- 新增回覆 -->
+<form action="/topic/save_reply/" autocomplete="on" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="article_id" id="article_id" value="{{ data_list.0 }}">
+    <div class="box">
+        <div class="inner">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody>
+                <tr>
+                  <td width="73" valign="top" align="center">
+                    <img src="#" alt="" width="80px" height="80px">
+                  </td>
+                  <td width="10" valign="top"></td>
+                  <td width="auto" valign="top" align="left">
+                    <h2 style="padding: 0px; margin: 0px; font-size: 14px; line-height: 18px;">Reply:</h2>
+                    <div class="sep5"></div>
+                    <div class="sep14">
+                        <span style="font-size:12px;">
+                            <textarea rows="15" cols="60" id="replyArea" name="replyArea"></textarea>
+                            <br>
+                            <input class="super normal button" value="Save" style="-moz-border-radius: 0px 5px 5px 0px; border: none;" type="submit">
+                        </span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+</div>
+      <div class="c">
+      </div>
+    </div>
+  </div>
+
+
+<div id="Bottom">
+  <div id="BottomMain">
+    <span class="fade"></span>
+    <div class="fr" style="float:right;color: #999999;">
+      Powered by <strong><a href="#">draguitar</a> </strong>
+    </div>
+  </div>
+</div>
+</body>
+</html>
